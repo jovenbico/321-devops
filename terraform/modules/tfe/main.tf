@@ -48,8 +48,9 @@ resource "tfe_variable" "aws_secret_access_key" {
   workspace_id = tfe_workspace.main[each.key].id
 }
 
+###########################
 ### Supporting Resource ###
-
+###########################
 resource "tfe_oauth_client" "github" {
   api_url          = "https://api.github.com"
   http_url         = "https://github.com"
