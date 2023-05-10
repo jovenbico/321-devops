@@ -7,9 +7,9 @@ locals {
   # {for k,v in local.workspaces : k => v.var_aws_region if v.var_aws_region}
   workspaces = {
     dev = {
-      branch         = "main",
-      identifier     = "jovenbico/321-devops",
-      var_aws_region = true
+      branch     = "main",
+      identifier = "jovenbico/321-devops",
+      var_aws    = true
     },
     stage = {
       branch     = "main",
@@ -28,10 +28,12 @@ locals {
 module "tfe" {
   source = "../../tfe"
 
-  organiztion  = local.organiztion
-  
-  github_token = "*"
-  aws_region = "*"
+  organiztion = local.organiztion
+
+  github_token          = "*"
+  aws_region            = "*"
+  aws_access_key_id     = "*"
+  aws_secret_access_key = "*"
 
   workspaces = local.workspaces
 

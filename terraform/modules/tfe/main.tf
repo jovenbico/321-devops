@@ -22,10 +22,28 @@ resource "tfe_workspace" "main" {
 }
 
 resource "tfe_variable" "aws_region" {
-  for_each = {for k,v in var.workspaces : k => v.var_aws_region if lookup(v,"var_aws_region", false)}
+  for_each = {for k,v in var.workspaces : k => v.var_aws if lookup(v,"var_aws", false)}
 
   key          = "AWS_REGION"
   value        = var.aws_region
+  category     = "terraform"
+  workspace_id = tfe_workspace.main[each.key].id
+}
+
+resource "tfe_variable" "aws_access_key_id" {
+  for_each = {for k,v in var.workspaces : k => v.var_aws if lookup(v,"var_aws", false)}
+
+  key          = "AWS_ACCESS_KEY_ID"
+  value        = var.aws_access_key_id
+  category     = "terraform"
+  workspace_id = tfe_workspace.main[each.key].id
+}
+
+resource "tfe_variable" "aws_secret_access_key" {
+  for_each = {for k,v in var.workspaces : k => v.var_aws if lookup(v,"var_aws", false)}
+
+  key          = "AWS_SECRET_ACCESS_KEY"
+  value        = var.aws_secret_access_key
   category     = "terraform"
   workspace_id = tfe_workspace.main[each.key].id
 }
