@@ -1,5 +1,6 @@
 provider "tfe" {
-  token = var.TERRAFORM_IO_TOKEN
+  token        = var.TERRAFORM_IO_TOKEN
+  organization = var.TERRAFORM_IO_ORGANIZATION
 }
 
 provider "github" {
