@@ -14,7 +14,7 @@ locals {
     }
   }
 
-  tags = ["321-devops", "workload"]
+  tags = ["321-devops", "workspace"]
 }
 
 provider "tfe" {
