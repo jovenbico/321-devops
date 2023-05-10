@@ -5,7 +5,7 @@ data "tfe_organization" "main" {
 resource "tfe_workspace" "main" {
   for_each = var.workspaces
 
-  terraform_version  = "~> 1.3"
+  terraform_version  = "~> 1.4"
   allow_destroy_plan = false
 
   name              = format("%s-%s", var.organiztion, each.key)
