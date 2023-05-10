@@ -13,3 +13,9 @@ variable "tags" {
   type = list(string)
   default = []
 }
+
+variable "github_token" {
+  description = "Github token"
+  type = string
+  default = ""
+}

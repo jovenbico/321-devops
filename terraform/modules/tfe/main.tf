@@ -15,8 +15,15 @@ resource "tfe_workspace" "main" {
   vcs_repo {
     branch         = each.value.branch
     identifier     = each.value.identifier
-    oauth_token_id = each.value.oauth_token_id
+    oauth_token_id = tfe_oauth_client.github.oauth_token_id
   }
 
   tag_names = length(var.tags) > 0 ? var.tags : []
+}
+
+resource "tfe_oauth_client" "github" {
+  api_url          = "https://api.github.com"
+  http_url         = "https://github.com"
+  oauth_token      = var.github_token
+  service_provider = "github"
 }

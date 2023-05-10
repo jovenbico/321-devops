@@ -7,12 +7,10 @@ locals {
     work1 = {
       branch = "main",
       identifier = "jovenbico/321-devops"
-      oauth_token_id = "github.oauth_token_id*"
     },
     work2 = {
       branch = "main",
       identifier = "jovenbico/321-devops"
-      oauth_token_id = "github.oauth_token_id*"
     }
   }
 
@@ -23,6 +21,8 @@ module "tfe" {
   source = "../../tfe"
 
   organiztion = local.organiztion
+  github_token = "*"
+  
   workspaces  = local.workspaces
 
   tags = local.tags
