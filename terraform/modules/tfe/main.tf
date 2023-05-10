@@ -10,7 +10,7 @@ resource "tfe_workspace" "main" {
 
   name              = format("%s-%s", var.organiztion, each.key)
   organization      = data.tfe_organization.main.name
-  working_directory = format("terraform/workloads/%s", each.key)
+  working_directory = format("terraform/workspaces/%s", each.key)
 
   vcs_repo {
     branch         = each.value.branch
