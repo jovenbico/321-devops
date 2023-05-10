@@ -1,14 +1,16 @@
-locals {
-  organiztion = "321-devops"
-  tags        = ["321-devops", "workspace"]
-}
 
 provider "tfe" {
-  token = var.TERRAFORM_IO_TOKEN
+  token        = var.TERRAFORM_IO_TOKEN
+  organization = var.TERRAFORM_IO_ORGANIZATION
 }
 
 provider "github" {
   token = var.GITHUB_TOKEN
+}
+
+locals {
+  organiztion = "321-devops"
+  tags        = ["321-devops", "main"]
 }
 
 module "tfe" {
