@@ -2,7 +2,7 @@ terraform {
   required_version = ">= 1.4"
 
   cloud {
-    organization = "321-devops-1"
+    organization = "321-devops"
     workspaces {
       tags = [
         "321-devops", "main"

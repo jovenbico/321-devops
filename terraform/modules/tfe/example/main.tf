@@ -1,5 +1,5 @@
 locals {
-  organiztion = "321-devops-1"
+  organiztion = "321-devops"
 
   # [for k,v in local.workspaces : "${k} has ${v.a}"]
   # {for k,v in local.workspaces : v.a => k}

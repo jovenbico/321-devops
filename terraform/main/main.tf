@@ -1,5 +1,5 @@
 locals {
-  organiztion = "321-devops-1"
+  organiztion = "321-devops"
   tags        = ["321-devops", "workspace"]
 }
 
