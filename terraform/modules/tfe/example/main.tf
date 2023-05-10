@@ -4,11 +4,11 @@ locals {
   # [for k,v in local.workspaces : "${k} has ${v.a}"]
   # {for k,v in local.workspaces : v.a => k}
   workspaces = {
-    work1 = {
+    dev = {
       branch = "main",
       identifier = "jovenbico/321-devops"
     },
-    work2 = {
+    stage = {
       branch = "main",
       identifier = "jovenbico/321-devops"
     }
