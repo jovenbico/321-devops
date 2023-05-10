@@ -21,6 +21,17 @@ resource "tfe_workspace" "main" {
   tag_names = length(var.tags) > 0 ? var.tags : []
 }
 
+resource "tfe_variable" "aws_region" {
+  for_each = {for k,v in var.workspaces : k => v.var_aws_region if lookup(v,"var_aws_region", false)}
+
+  key          = "AWS_REGION"
+  value        = var.aws_region
+  category     = "terraform"
+  workspace_id = tfe_workspace.main[each.key].id
+}
+
+### Supporting Resource ###
+
 resource "tfe_oauth_client" "github" {
   api_url          = "https://api.github.com"
   http_url         = "https://github.com"

@@ -10,12 +10,18 @@ variable "workspaces" {
 
 variable "tags" {
   description = "workspace tags"
-  type = list(string)
-  default = []
+  type        = list(string)
+  default     = []
 }
 
 variable "github_token" {
   description = "Github token"
-  type = string
-  default = ""
+  type        = string
+  default     = ""
+}
+
+variable "aws_region" {
+  description = "AWS region"
+  type        = string
+  default     = ""
 }
