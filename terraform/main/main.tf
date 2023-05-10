@@ -16,9 +16,9 @@ locals {
 module "tfe" {
   source = "../modules/tfe"
 
-  organiztion  = local.organiztion
-  github_token = var.GITHUB_TOKEN
+  organiztion = local.organiztion
 
+  github_token          = var.GITHUB_TOKEN
   aws_region            = var.AWS_REGION
   aws_access_key_id     = var.AWS_ACCESS_KEY_ID
   aws_secret_access_key = var.AWS_SECRET_ACCESS_KEY
