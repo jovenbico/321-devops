@@ -1,3 +1,11 @@
+provider "tfe" {
+  token = var.TERRAFORM_IO_TOKEN
+}
+
+provider "github" {
+  token = var.GITHUB_TOKEN
+}
+
 locals {
   organiztion = "321-devops"
 

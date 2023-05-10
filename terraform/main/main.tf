@@ -3,6 +3,14 @@ locals {
   tags        = ["321-devops", "workspace"]
 }
 
+provider "tfe" {
+  token = var.TERRAFORM_IO_TOKEN
+}
+
+provider "github" {
+  token = var.GITHUB_TOKEN
+}
+
 module "tfe" {
   source = "../modules/tfe"
 
