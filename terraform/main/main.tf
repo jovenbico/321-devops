@@ -3,22 +3,22 @@ locals {
   tags        = ["321-devops", "workspace"]
 }
 
-# module "tfe" {
-#   source = "../modules/tfe"
+module "tfe" {
+  source = "../modules/tfe"
 
-#   organiztion  = local.organiztion
-#   github_token = var.GITHUB_TOKEN
+  organiztion  = local.organiztion
+  github_token = var.GITHUB_TOKEN
 
-#   workspaces = {
-#     infra = {
-#       branch         = "main",
-#       identifier     = "jovenbico/321-devops"
-#     },
-#     dev = {
-#       branch         = "main",
-#       identifier     = "jovenbico/321-devops"
-#     }
-#   }
+  workspaces = {
+    infra = {
+      branch         = "main",
+      identifier     = "jovenbico/321-devops"
+    },
+    dev = {
+      branch         = "main",
+      identifier     = "jovenbico/321-devops"
+    }
+  }
 
-#   tags = local.tags
-# }
+  tags = local.tags
+}

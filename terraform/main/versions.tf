@@ -1,6 +1,4 @@
 terraform {
-  required_version = ">= 1.4"
-
   cloud {
     organization = "321-devops"
     workspaces {
@@ -16,9 +14,6 @@ terraform {
       version = "~> 0.44.0"
     }
   }
-}
 
-provider "tfe" {
-  token        = var.TERRAFORM_IO_TOKEN
-  organization = var.TERRAFORM_IO_ORGANIZATION
+  required_version = ">= 0.14.0"
 }

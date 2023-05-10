@@ -17,6 +17,11 @@ locals {
   tags = ["321-devops", "workload"]
 }
 
+provider "tfe" {
+  token        = var.TERRAFORM_IO_TOKEN
+  organization = var.TERRAFORM_IO_ORGANIZATION
+}
+
 module "tfe" {
   source = "../../tfe"
 
