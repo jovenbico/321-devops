@@ -8,7 +8,7 @@ resource "tfe_workspace" "main" {
   terraform_version  = "~> 1.3"
   allow_destroy_plan = false
 
-  name              = format("%s-%s", var.TERRAFORM_IO_ORGANIZATION, each.key)
+  name              = format("%s-%s", var.organiztion, each.key)
   organization      = data.tfe_organization.main.name
   working_directory = format("terraform/workloads/%s", each.key)
 
