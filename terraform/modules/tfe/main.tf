@@ -18,7 +18,9 @@ resource "tfe_workspace" "main" {
     oauth_token_id = tfe_oauth_client.github.oauth_token_id
   }
 
-  tag_names = length(var.tags) > 0 ? var.tags : []
+  tag_names = concat(length(var.tags) > 0 ? var.tags : [], [
+    each.key
+  ])
 }
 
 resource "tfe_variable" "aws_region" {

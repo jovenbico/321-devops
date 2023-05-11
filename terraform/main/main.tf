@@ -10,7 +10,7 @@ provider "github" {
 
 locals {
   organiztion = "321-devops"
-  tags        = ["321-devops", "main"]
+  tags        = ["321-devops", "workspace"]
 }
 
 module "tfe" {
