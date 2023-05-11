@@ -23,6 +23,6 @@ provider "helm" {
 resource "helm_release" "hello_app" {
   count = (local.deploy_hello_app ? 1 : 0)
 
-  name  = "hello_app"
+  name  = "hello-app"
   chart = "../../../applications/hello-world/chart"
 }
