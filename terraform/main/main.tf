@@ -9,14 +9,13 @@ provider "github" {
 }
 
 locals {
-  organiztion = "321-devops"
   tags        = ["321-devops", "workspace"]
 }
 
 module "tfe" {
   source = "../modules/tfe"
 
-  organiztion = local.organiztion
+  organization = var.TERRAFORM_IO_ORGANIZATION
 
   github_token          = var.GITHUB_TOKEN
   aws_region            = var.AWS_REGION

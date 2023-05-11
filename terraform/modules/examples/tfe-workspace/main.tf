@@ -8,7 +8,7 @@ provider "github" {
 }
 
 locals {
-  organiztion = "321-devops"
+  organization = "321-devops"
 
   # [for k,v in local.workspaces : "${k} has ${v.a}"]
   # {for k,v in local.workspaces : v.a => k}
@@ -31,7 +31,7 @@ locals {
 module "tfe" {
   source = "../../tfe"
 
-  organiztion = local.organiztion
+  organization = local.organization
 
   github_token          = var.GITHUB_TOKEN
   aws_region            = "*"

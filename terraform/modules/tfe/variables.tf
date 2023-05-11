@@ -1,5 +1,5 @@
-variable "organiztion" {
-  description = "tfe organiztion name"
+variable "organization" {
+  description = "tfe organization name"
 }
 
 variable "workspaces" {

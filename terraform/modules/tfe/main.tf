@@ -1,5 +1,5 @@
 data "tfe_organization" "main" {
-  name = var.organiztion
+  name = var.organization
 }
 
 resource "tfe_workspace" "main" {
@@ -8,7 +8,7 @@ resource "tfe_workspace" "main" {
   terraform_version  = "~> 1.4"
   allow_destroy_plan = false
 
-  name              = format("%s-%s", var.organiztion, each.key)
+  name              = format("%s-%s", var.organization, each.key)
   organization      = data.tfe_organization.main.name
   working_directory = format("terraform/workspaces/%s", each.key)
 
