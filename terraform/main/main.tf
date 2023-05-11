@@ -24,15 +24,15 @@ module "tfe" {
   aws_secret_access_key = var.AWS_SECRET_ACCESS_KEY
 
   workspaces = {
-    infra = {
+    dev = {
       branch     = "main",
       identifier = "jovenbico/321-devops",
       var_aws    = true
-    },
-    dev = {
-      branch     = "main",
-      identifier = "jovenbico/321-devops"
     }
+    # stage = {
+    #   branch     = "main",
+    #   identifier = "jovenbico/321-devops"
+    # }
   }
 
   tags = local.tags
