@@ -6,7 +6,7 @@ data "aws_availability_zones" "available" {}
 
 locals {
   name   = "the-eks"
-  region = "us-east-1"
+  region = var.AWS_REGION
 
   cluster_version = "1.25"
 
