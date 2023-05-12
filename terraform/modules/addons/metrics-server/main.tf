@@ -1,13 +1,16 @@
 locals {
   addon_metrics_server = var.addon_metrics_server
+
+  name = "metrics-server"
 }
 
 resource "helm_release" "metrics_server" {
   count = (local.addon_metrics_server ? 1 : 0)
 
-  name       = "metrics-server"
-  namespace  = "kube-system"
-  repository = "https://kubernetes-sigs.github.io/metrics-server"
-  chart      = "metrics-server/metrics-server"
-  version    = "0.6.3"
+  name        = local.name
+  namespace   = "kube-system"
+  description = "Metric server helm Chart deployment configuration"
+  repository  = "https://kubernetes-sigs.github.io/metrics-server/"
+  chart       = local.name
+  version     = "3.10.0"
 }
