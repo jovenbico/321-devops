@@ -12,22 +12,39 @@ minikube start \
  --addons ingress,ingress-dns
 ```
 
-## Create namespace for testing
+## Deploy local chart
+
+### Create namespace for testing
 ```Shell
 kubectl create namespace hello
 ```
 
-## Check the deployment with helm
+### Check the deployment with helm
 ```Shell
 helm install hello ./chart/ --dry-run
 ```
 
-## Check the deployment with helm
+### Deployment with helm
 ```Shell
 helm install hello ./chart/ -n hello
 ```
 
-## Upgrade helm deployment
+### Upgrade helm deployment
 ```Shell
 helm upgrade hello ./chart/ -n hello
+```
+
+## K8s Metrics Server
+
+### Installing the chart
+```Shell
+helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
+
+helm upgrade --install -f metrics-server/values.yaml \
+  metrics-server metrics-server/metrics-server -n kube-system
+```
+
+### Verify the `metrics-server` deployment
+```Shell
+kubectl get deployment metrics-server -n kube-system
 ```
