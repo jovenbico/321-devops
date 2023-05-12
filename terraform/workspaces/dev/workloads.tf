@@ -1,5 +1,7 @@
 locals {
-  deploy_hello_app = true
+  addon_metrics_server = true
+  deploy_hello_app     = true
+
 }
 
 data "aws_eks_cluster_auth" "this" {
@@ -20,9 +22,19 @@ provider "helm" {
   }
 }
 
+module "addon_metrics_server" {
+  addon_metrics_server = local.addon_metrics_server
+
+  source = "../../modules/addons/metrics-server"
+
+  depends_on = [module.eks.cluster_arn]
+}
+
 resource "helm_release" "hello_app" {
   count = (local.deploy_hello_app ? 1 : 0)
 
   name  = "hello-app"
   chart = "../../../applications/hello-world/chart"
+
+  depends_on = [module.eks.cluster_arn]
 }
