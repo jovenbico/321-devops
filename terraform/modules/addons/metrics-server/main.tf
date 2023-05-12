@@ -4,7 +4,7 @@ locals {
   name = "metrics-server"
 }
 
-resource "helm_release" "metrics_server" {
+resource "helm_release" "this" {
   count = (local.addon_metrics_server ? 1 : 0)
 
   name        = local.name
