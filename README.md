@@ -7,13 +7,13 @@ Create the sandbox and take copy the AWS `access` and `secret` keys
 
 ## Terraform Cloud
 ### Update Variables in Terraform Cloud
-[self-service workspace](https://app.terraform.io/app/321-devops/workspaces/self-service/)
+[self-service workspace](https://app.terraform.io/app/321-devops/workspaces/321-devops)
 ```
 AWS_ACCESS_KEY_ID=*
 AWS_SECRET_ACCESS_KEY=*
 ```
 ### Start new run in Terraform Cloud
-Start new run in self-service workspace to update the [workspace.tf](/terraform/self-service/workspace.tf).
+Start new run in self-service workspace to update the [workspace.tf](/terraform/main/main.tf).
 
 ---
 ### Terraform login in local
