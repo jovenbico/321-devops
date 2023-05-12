@@ -1,5 +1,5 @@
 module "eks_cluster" {
-  source = "../../eks"
+  source = "../../_eks"
 
   name = "dev"
 
