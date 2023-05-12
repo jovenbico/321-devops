@@ -1,4 +1,5 @@
 locals {
+
   addon_metrics_server = true
   deploy_hello_app     = true
 
@@ -30,6 +31,11 @@ module "addon_metrics_server" {
 
   source = "../../modules/addons/metrics-server"
 
+  depends_on = [
+    module.eks.cluster_name,
+    module.eks.cluster_endpoint,
+    module.eks.oidc_provider
+  ]
 }
 
 ################################################################################
@@ -41,4 +47,9 @@ resource "helm_release" "hello_app" {
   name  = "hello-app"
   chart = "../../../applications/hello-world/chart"
 
+  depends_on = [
+    module.eks.cluster_name,
+    module.eks.cluster_endpoint,
+    module.eks.oidc_provider
+  ]
 }
