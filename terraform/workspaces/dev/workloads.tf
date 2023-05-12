@@ -22,19 +22,23 @@ provider "helm" {
   }
 }
 
+########################################################################################
+# EKS addons
+########################################################################################
 module "addon_metrics_server" {
   addon_metrics_server = local.addon_metrics_server
 
   source = "../../modules/addons/metrics-server"
 
-  depends_on = [module.eks.cluster_arn]
 }
 
+########################################################################################
+# Application workloads
+########################################################################################
 resource "helm_release" "hello_app" {
   count = (local.deploy_hello_app ? 1 : 0)
 
   name  = "hello-app"
   chart = "../../../applications/hello-world/chart"
 
-  depends_on = [module.eks.cluster_arn]
 }
