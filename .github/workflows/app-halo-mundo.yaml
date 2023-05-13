@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: applications/halo-mundo
+        working-directory: ./applications/halo-mundo
     steps:
       -
         name: Checkout
