@@ -16,6 +16,8 @@ on:
 jobs:
   docker-build-push:
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
     steps:
       -
         name: Checkout
