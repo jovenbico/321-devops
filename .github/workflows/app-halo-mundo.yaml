@@ -31,7 +31,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            {{ env.REGISTRY }}/{{ github.repository }}/{{ env.NAME }}
+            ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.NAME }}
       -
         name: Login to ghcr.io
         if: github.event_name != 'pull_request'
@@ -44,8 +44,8 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v4
         with:
-          file: applications/{{ env.NAME }}/Dockerfile
-          context: ./applications/{{ env.NAME }}
+          file: applications/${{ env.NAME }}/Dockerfile
+          context: ./applications/${{ env.NAME }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
