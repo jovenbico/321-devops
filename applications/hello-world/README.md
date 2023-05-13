@@ -40,6 +40,11 @@ helm upgrade hello ./chart/ -n hello
 ```Shell
 helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
 
+helm upgrade --install \
+  metrics-server metrics-server/metrics-server -n kube-system
+
+## ONLY need in minikube ##
+## Kubelet certificate needs to be signed by cluster Certificate Authority (or disable certificate validation by passing `--kubelet-insecure-tls` to Metrics Server) ##
 helm upgrade --install -f metrics-server/values.yaml \
   metrics-server metrics-server/metrics-server -n kube-system
 ```
