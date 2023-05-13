@@ -16,9 +16,6 @@ on:
 jobs:
   docker-build-push:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./applications/halo-mundo
     steps:
       -
         name: Checkout
@@ -41,7 +38,8 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: .
+          file: applications/halo-mundo/Dockerfile
+          context: ./applications
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
