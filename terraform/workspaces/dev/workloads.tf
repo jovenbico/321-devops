@@ -45,7 +45,7 @@ resource "helm_release" "hello_app" {
   count = (local.deploy_hello_app ? 1 : 0)
 
   name  = "hello-app"
-  chart = "../../../applications/hello-world/chart"
+  chart = "../../../applications/helm/chart"
 
   set {
     name = "ingress.hosts[0].host"
