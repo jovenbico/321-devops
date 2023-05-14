@@ -54,6 +54,17 @@ resource "tfe_variable" "aws_secret_access_key" {
   sensitive = true
 }
 
+resource "tfe_variable" "github_token" {
+  for_each = { for k, v in var.workspaces : k => v.var_aws if lookup(v, "var_github", false) }
+
+  key          = "GITHUB_TOKEN"
+  value        = var.github_token
+  category     = "terraform"
+  workspace_id = tfe_workspace.main[each.key].id
+
+  sensitive = true
+}
+
 ###########################
 ### Supporting Resource ###
 ###########################

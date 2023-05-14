@@ -26,7 +26,8 @@ module "tfe" {
     dev = {
       branch     = "main",
       identifier = "jovenbico/321-devops",
-      var_aws    = true
+      var_aws    = true,
+      var_github = true
     }
     # stage = {
     #   branch     = "main",
