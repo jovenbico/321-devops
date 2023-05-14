@@ -1,5 +1,6 @@
 locals {
 
+  addon_ingress_nginx  = true
   addon_metrics_server = true
   deploy_hello_app     = true
 
@@ -26,6 +27,17 @@ provider "helm" {
 ################################################################################
 # EKS addons
 ################################################################################
+module "addon_ingress_nginx" {
+  addon_ingress_nginx = local.addon_ingress_nginx
+
+  source = "../../modules/addons/nginx-ingress"
+
+  depends_on = [
+    module.eks.cluster_name,
+    module.eks.cluster_endpoint,
+    module.eks.oidc_provider
+  ]
+}
 module "addon_metrics_server" {
   addon_metrics_server = local.addon_metrics_server
 
