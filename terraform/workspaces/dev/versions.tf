@@ -21,14 +21,10 @@ terraform {
       source  = "hashicorp/helm"
       version = ">= 2.8"
     }
-    # random = {
-    #   source  = "hashicorp/random"
-    #   version = "3.3.2"
-    # }
-    # bcrypt = {
-    #   source  = "viktorradnai/bcrypt"
-    #   version = ">= 0.1.2"
-    # }
+    github = {
+      source = "integrations/github"
+      version = ">= 5.25"
+    }
   }
 
   required_version = ">= 1.0"
