@@ -50,14 +50,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Update KubeConfig
+      - name: Deploy
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
           aws eks --region us-east-1 update-kubeconfig --name the-eks
-
-      - name: Deploy
-        run: |
           helm upgrade --install hello-app ./applications/helm/chart/ --set image.tag=latest-${{ github.sha }}
-
