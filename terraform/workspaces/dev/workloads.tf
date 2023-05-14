@@ -47,11 +47,6 @@ resource "helm_release" "hello_app" {
   name  = "hello-app"
   chart = "../../../applications/helm/chart"
 
-  set {
-    name = "ingress.hosts[0].host"
-    value = "hello.frankiebico.work"
-  }
-
   depends_on = [
     module.eks.cluster_name,
     module.eks.cluster_endpoint,
