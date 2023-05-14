@@ -1,6 +1,8 @@
 variable "TERRAFORM_IO_TOKEN" {
   description = "Terraform cloud token"
   type        = string
+
+  sensitive = true
 }
 
 variable "TERRAFORM_IO_ORGANIZATION" {
@@ -11,6 +13,8 @@ variable "TERRAFORM_IO_ORGANIZATION" {
 variable "GITHUB_TOKEN" {
   description = "Github token"
   type        = string
+
+  sensitive = true
 }
 
 variable "AWS_REGION" {
@@ -21,9 +25,13 @@ variable "AWS_REGION" {
 variable "AWS_ACCESS_KEY_ID" {
   description = "AWS access key id"
   type        = string
+
+  sensitive = true
 }
 
 variable "AWS_SECRET_ACCESS_KEY" {
   description = "AWS secret access key"
   type        = string
+
+  sensitive = true
 }
