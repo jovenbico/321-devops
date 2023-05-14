@@ -34,6 +34,7 @@
 				// "googlecloudtools.cloudcode",
 				// "ms-azuretools.vscode-docker",
 				"GitHub.vscode-pull-request-github",
+				"github.vscode-github-actions",
 				"eamodio.gitlens"
 			],
 			"settings": {
