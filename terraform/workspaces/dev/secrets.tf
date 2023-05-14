@@ -14,6 +14,6 @@ resource "github_actions_secret" "aws_access_key_id" {
 
 resource "github_actions_secret" "aws_secret_access_key" {
   repository       = local.repository
-  secret_name      = "AWS_ACCESS_KEY_ID"
+  secret_name      = "AWS_SECRET_ACCESS_KEY"
   plaintext_value  = var.AWS_SECRET_ACCESS_KEY
 }
