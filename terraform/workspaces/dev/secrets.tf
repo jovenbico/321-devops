@@ -1,5 +1,5 @@
 locals {
-  repository = "jovenbico/321-devops"
+  repository = "321-devops"
 }
 
 provider "github" {
