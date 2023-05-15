@@ -41,7 +41,9 @@ jobs:
           file: applications/${{ env.NAME }}/Dockerfile
           context: ./applications/${{ env.NAME }}
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.NAME }}:latest-${{ github.sha }}
+          tags: |
+            ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.NAME }}:latest
+            ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.NAME }}:latest-${{ github.sha }}
 
   helm-release:
     runs-on: ubuntu-latest
