@@ -11,12 +11,16 @@ locals {
   tfe_organization = var.TFE_ORGANIZATION
   tags             = [local.tfe_organization, "workspace"]
 
-  github_token = var.GITHUB_TOKEN
-
   aws_config = {
     region            = var.AWS_REGION
     access_key_id     = var.AWS_ACCESS_KEY_ID
     secret_access_key = var.AWS_SECRET_ACCESS_KEY
+  }
+
+  github_config = {
+    token        = var.GITHUB_TOKEN
+    organization = "jovenbico"
+    repository   = "321-devops"
   }
 }
 
@@ -25,8 +29,8 @@ module "tfe" {
 
   organization = local.tfe_organization
 
-  github_token = local.github_token
-  aws_config   = local.aws_config
+  aws_config    = local.aws_config
+  github_config = local.github_config
 
   workspaces = {
     dev = {

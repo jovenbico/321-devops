@@ -58,11 +58,20 @@ resource "tfe_variable" "github_token" {
   for_each = { for k, v in var.workspaces : k => v.var_aws if lookup(v, "var_github", false) }
 
   key          = "GITHUB_TOKEN"
-  value        = var.github_token
+  value        = var.github_config.token
   category     = "terraform"
   workspace_id = tfe_workspace.main[each.key].id
 
   sensitive = true
+}
+
+resource "tfe_variable" "github_repository" {
+  for_each = { for k, v in var.workspaces : k => v.var_aws if lookup(v, "var_github", false) }
+
+  key          = "GITHUB_REPOSITORY"
+  value        = var.github_config.repository
+  category     = "terraform"
+  workspace_id = tfe_workspace.main[each.key].id
 }
 
 ###########################
@@ -71,6 +80,6 @@ resource "tfe_variable" "github_token" {
 resource "tfe_oauth_client" "github" {
   api_url          = "https://api.github.com"
   http_url         = "https://github.com"
-  oauth_token      = var.github_token
+  oauth_token      = var.github_config.token
   service_provider = "github"
 }

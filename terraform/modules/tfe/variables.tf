@@ -14,12 +14,6 @@ variable "tags" {
   default     = []
 }
 
-variable "github_token" {
-  description = "Github token"
-  type        = string
-  default     = ""
-}
-
 variable "aws_config" {
   description = "AWS Configuration"
   type = object({
@@ -27,12 +21,13 @@ variable "aws_config" {
     access_key_id     = string
     secret_access_key = string
   })
+}
 
-  default = {
-    region            = ""
-    access_key_id     = ""
-    secret_access_key = ""
-  }
-
-  sensitive = true
+variable "github_config" {
+  description = "Github Configuration"
+  type = object({
+    token        = string
+    organization = string
+    repository   = string
+  })
 }
