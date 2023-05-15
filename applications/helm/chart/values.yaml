@@ -8,7 +8,7 @@ image:
   repository: ghcr.io/jovenbico/321-devops/halo-mundo
   pullPolicy: Always #IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "main"
+  tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""
