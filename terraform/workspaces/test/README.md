@@ -23,7 +23,7 @@ AWS_SECRET_ACCESS_KEY = ""
 GITHUB_TOKEN = ""
 ```
 
-To provision this example:  
+To provision this test:  
 Run the terraform plan, which lets you preview the changes
 ```sh
 terraform init
