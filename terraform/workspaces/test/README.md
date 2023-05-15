@@ -1,5 +1,11 @@
 # EKS Cluster with Workloads
 
+Terraform code that will deploy the following [workloads:](workloads.tf)
+
+* ingress-nginx
+* metrics-server
+* hello-app (python)
+
 ## Prerequisites
 
 Ensure that you have the following tools installed locally:
