@@ -25,6 +25,10 @@ terraform {
       source = "integrations/github"
       version = ">= 5.25"
     }
+    time = {
+      source  = "hashicorp/time"
+      version = ">= 0.8"
+    }
   }
 
   required_version = ">= 1.0"

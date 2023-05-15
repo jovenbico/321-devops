@@ -6,20 +6,32 @@ locals {
 
 }
 
+resource "time_sleep" "this" {
+  create_duration = "10s"
+
+  triggers = {
+    cluster_name = module.eks.cluster_name # wait to be ready
+  }
+}
+
+data "aws_eks_cluster" "this" {
+  name = time_sleep.this.triggers["cluster_name"]
+}
+
 data "aws_eks_cluster_auth" "this" {
-  name = module.eks.cluster_name
+  name = time_sleep.this.triggers["cluster_name"]
 }
 
 provider "kubernetes" {
-  host                   = module.eks.cluster_endpoint
-  cluster_ca_certificate = base64decode(module.eks.cluster_certificate_authority_data)
+  host                   = data.aws_eks_cluster.this.endpoint
+  cluster_ca_certificate = base64decode(data.aws_eks_cluster.this.certificate_authority[0].data)
   token                  = data.aws_eks_cluster_auth.this.token
 }
 
 provider "helm" {
   kubernetes {
-    host                   = module.eks.cluster_endpoint
-    cluster_ca_certificate = base64decode(module.eks.cluster_certificate_authority_data)
+    host                   = data.aws_eks_cluster.this.endpoint
+    cluster_ca_certificate = base64decode(data.aws_eks_cluster.this.certificate_authority[0].data)
     token                  = data.aws_eks_cluster_auth.this.token
   }
 }
@@ -32,22 +44,12 @@ module "addon_ingress_nginx" {
 
   source = "../../modules/addons/nginx-ingress"
 
-  depends_on = [
-    module.eks.cluster_name,
-    module.eks.cluster_endpoint,
-    module.eks.oidc_provider
-  ]
 }
 module "addon_metrics_server" {
   addon_metrics_server = local.addon_metrics_server
 
   source = "../../modules/addons/metrics-server"
 
-  depends_on = [
-    module.eks.cluster_name,
-    module.eks.cluster_endpoint,
-    module.eks.oidc_provider
-  ]
 }
 
 ################################################################################
@@ -59,9 +61,4 @@ resource "helm_release" "hello_app" {
   name  = "hello-app"
   chart = "../../../applications/helm/chart"
 
-  depends_on = [
-    module.eks.cluster_name,
-    module.eks.cluster_endpoint,
-    module.eks.oidc_provider
-  ]
 }
