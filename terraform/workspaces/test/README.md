@@ -9,6 +9,7 @@ Ensure that you have the following tools installed locally:
 3. [terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 
 ## Deploy
+
 Using input variable values`testing.tfvars`
 ```
 AWS_ACCESS_KEY_ID = ""
@@ -54,3 +55,12 @@ The following command will update the `kubeconfig` on your local machine and all
     ```sh
     kubectl get ingress -A
     ```
+
+## Destroy
+
+To teardown and remove the resources created in this test:
+
+```sh
+kubectl delete deployment hello-app
+terraform destroy -var-file="testing.tfvars" -auto-approve
+```
