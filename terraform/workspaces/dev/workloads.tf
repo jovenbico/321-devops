@@ -7,17 +7,23 @@ locals {
 }
 
 provider "kubernetes" {
-  host                   = data.aws_eks_cluster.this.endpoint
-  cluster_ca_certificate = base64decode(data.aws_eks_cluster.this.certificate_authority[0].data)
+  host                   = module.eks.cluster_endpoint
+  cluster_ca_certificate = base64decode(module.eks.cluster_certificate_authority_data)
   token                  = data.aws_eks_cluster_auth.this.token
 }
 
 provider "helm" {
   kubernetes {
-    host                   = data.aws_eks_cluster.this.endpoint
-    cluster_ca_certificate = base64decode(data.aws_eks_cluster.this.certificate_authority[0].data)
+    host                   = module.eks.cluster_endpoint
+    cluster_ca_certificate = base64decode(module.eks.cluster_certificate_authority_data)
     token                  = data.aws_eks_cluster_auth.this.token
   }
+}
+
+resource "time_sleep" "wait_10_seconds" {
+  create_duration = "10s"
+
+  depends_on = [module.eks] # wait to be ready
 }
 
 ################################################################################
@@ -28,12 +34,14 @@ module "addon_ingress_nginx" {
 
   source = "../../modules/addons/nginx-ingress"
 
+  depends_on = [time_sleep.wait_10_seconds]
 }
 module "addon_metrics_server" {
   addon_metrics_server = local.addon_metrics_server
 
   source = "../../modules/addons/metrics-server"
 
+  depends_on = [time_sleep.wait_10_seconds]
 }
 
 ################################################################################
@@ -45,4 +53,5 @@ resource "helm_release" "hello_app" {
   name  = "hello-app"
   chart = "../../../applications/helm/chart"
 
+  depends_on = [time_sleep.wait_10_seconds]
 }
