@@ -23,3 +23,10 @@ variable "GITHUB_TOKEN" {
 
   sensitive = true
 }
+
+variable "GITHUB_REPO" {
+  description = "Github repository"
+  type        = string
+
+  default = ""
+}
