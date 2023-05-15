@@ -2,8 +2,6 @@ provider "aws" {
   region = local.region
 }
 
-data "aws_availability_zones" "available" {}
-
 locals {
   name   = "the-eks"
   region = var.AWS_REGION
