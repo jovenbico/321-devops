@@ -20,7 +20,6 @@ Using input variable values`testing.tfvars`
 ```
 AWS_ACCESS_KEY_ID = ""
 AWS_SECRET_ACCESS_KEY = ""
-GITHUB_TOKEN = ""
 ```
 
 To provision this test:  

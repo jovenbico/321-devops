@@ -19,9 +19,3 @@ variable "AWS_SECRET_ACCESS_KEY" {
   sensitive = true
 }
 
-variable "GITHUB_TOKEN" {
-  description = "Github personal access token"
-  type        = string
-
-  sensitive = true
-}
