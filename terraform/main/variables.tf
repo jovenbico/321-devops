@@ -1,11 +1,11 @@
-variable "TERRAFORM_IO_TOKEN" {
+variable "TFE_TOKEN" {
   description = "Terraform cloud token"
   type        = string
 
   sensitive = true
 }
 
-variable "TERRAFORM_IO_ORGANIZATION" {
+variable "TFE_ORGANIZATION" {
   description = "Terraform cloud organization"
   type        = string
 }

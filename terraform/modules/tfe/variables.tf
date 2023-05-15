@@ -20,24 +20,19 @@ variable "github_token" {
   default     = ""
 }
 
-variable "aws_region" {
-  description = "AWS region"
-  type        = string
-  default     = ""
-}
+variable "aws_config" {
+  description = "AWS Configuration"
+  type = object({
+    region            = string
+    access_key_id     = string
+    secret_access_key = string
+  })
 
-variable "aws_access_key_id" {
-  description = "AWS access key id"
-  type        = string
-  default     = ""
-
-  sensitive = true
-}
-
-variable "aws_secret_access_key" {
-  description = "AWS secret access key"
-  type        = string
-  default     = ""
+  default = {
+    region            = ""
+    access_key_id     = ""
+    secret_access_key = ""
+  }
 
   sensitive = true
 }

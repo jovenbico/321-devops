@@ -1,26 +1,32 @@
 
 provider "tfe" {
-  token        = var.TERRAFORM_IO_TOKEN
-  organization = var.TERRAFORM_IO_ORGANIZATION
+  organization = local.tfe_organization
 }
 
 provider "github" {
-  token = var.GITHUB_TOKEN
+  token = local.github_token
 }
 
 locals {
-  tags        = ["321-devops", "workspace"]
+  tfe_organization = var.TFE_ORGANIZATION
+  tags             = [local.tfe_organization, "workspace"]
+
+  github_token = var.GITHUB_TOKEN
+
+  aws_config = {
+    region            = var.AWS_REGION
+    access_key_id     = var.AWS_ACCESS_KEY_ID
+    secret_access_key = var.AWS_SECRET_ACCESS_KEY
+  }
 }
 
 module "tfe" {
   source = "../modules/tfe"
 
-  organization = var.TERRAFORM_IO_ORGANIZATION
+  organization = local.tfe_organization
 
-  github_token          = var.GITHUB_TOKEN
-  aws_region            = var.AWS_REGION
-  aws_access_key_id     = var.AWS_ACCESS_KEY_ID
-  aws_secret_access_key = var.AWS_SECRET_ACCESS_KEY
+  github_token = local.github_token
+  aws_config   = local.aws_config
 
   workspaces = {
     dev = {
