@@ -20,8 +20,8 @@ provider "helm" {
   }
 }
 
-resource "time_sleep" "wait_10_seconds" {
-  create_duration = "10s"
+resource "time_sleep" "this" {
+  create_duration = "20s"
 
   depends_on = [module.eks] # wait to be ready
 }
@@ -34,14 +34,14 @@ module "addon_ingress_nginx" {
 
   source = "../../modules/addons/nginx-ingress"
 
-  depends_on = [time_sleep.wait_10_seconds]
+  depends_on = [time_sleep.this]
 }
 module "addon_metrics_server" {
   addon_metrics_server = local.addon_metrics_server
 
   source = "../../modules/addons/metrics-server"
 
-  depends_on = [time_sleep.wait_10_seconds]
+  depends_on = [time_sleep.this]
 }
 
 ################################################################################
@@ -53,5 +53,5 @@ resource "helm_release" "hello_app" {
   name  = "hello-app"
   chart = "../../../applications/helm/chart"
 
-  depends_on = [time_sleep.wait_10_seconds]
+  depends_on = [time_sleep.this]
 }
