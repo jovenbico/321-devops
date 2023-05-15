@@ -67,6 +67,5 @@ The following command will update the `kubeconfig` on your local machine and all
 To teardown and remove the resources created in this test:
 
 ```sh
-kubectl delete deployment hello-app
 terraform destroy -var-file="testing.tfvars" -auto-approve
 ```
