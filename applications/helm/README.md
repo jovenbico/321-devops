@@ -3,41 +3,46 @@
 ## Configure minikube
 
 Start minikube
-```Shell
+```sh
 minikube start \
- --kubernetes-version 1.25.9 \
+ --kubernetes-version 1.25.10 \
  --container-runtime=containerd \
  --nodes 3 \
  --cni calico \
- --addons ingress,ingress-dns
+```
+
+Enable addons
+```
+minikube addons enable ingress
+minikube addons enable ingress-dns
 ```
 
 ## Deploy local chart
 
 ### Create namespace for testing
-```Shell
+```sh
 kubectl create namespace hello
 ```
 
 ### Check the deployment with helm
-```Shell
+```sh
 helm install hello ./chart/ --dry-run
 ```
 
 ### Deployment with helm
-```Shell
+```sh
 helm install hello ./chart/ -n hello
 ```
 
 ### Upgrade helm deployment
-```Shell
+```sh
 helm upgrade hello ./chart/ -n hello
 ```
 
 ## K8s Metrics Server
 
 ### Installing the chart
-```Shell
+```sh
 helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
 
 helm upgrade --install \
@@ -50,6 +55,6 @@ helm upgrade --install -f metrics-server/values.yaml \
 ```
 
 ### Verify the `metrics-server` deployment
-```Shell
+```sh
 kubectl get deployment metrics-server -n kube-system
 ```
