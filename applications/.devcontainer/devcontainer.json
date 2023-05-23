@@ -7,6 +7,14 @@
         "ghcr.io/devcontainers/features/python:1": {
 			"version": "3.9"
 		},
+		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
+			"version": "1.25",
+			"helm": "latest",
+			"minikube": "latest"
+		},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {
+			"version": "lts"
+		},
 		"ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
 			"packages": "iputils-ping,figlet,apache2-utils"
 		}
