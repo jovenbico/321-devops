@@ -8,7 +8,7 @@ minikube start \
  --kubernetes-version 1.25.10 \
  --container-runtime=containerd \
  --nodes 3 \
- --cni calico \
+ --cni calico
 ```
 
 Enable addons
