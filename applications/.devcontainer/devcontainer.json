@@ -1,0 +1,29 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
+{
+	"name": "321 DevOps - Applications",
+	"image": "mcr.microsoft.com/devcontainers/base:jammy",
+	"features": {
+        "ghcr.io/devcontainers/features/python:1": {
+			"version": "3.9"
+		},
+		"ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+			"packages": "iputils-ping,figlet,apache2-utils"
+		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"GitHub.vscode-pull-request-github",
+				"github.vscode-github-actions",
+				"eamodio.gitlens"
+			],
+			"settings": {
+				"outline.collapseItems": "alwaysCollapse",
+				"gitlens.codeLens.enabled": false,
+				"aws.telemetry": false,
+				"terminal.integrated.scrollback": 10000
+			}
+		}
+	}
+}
