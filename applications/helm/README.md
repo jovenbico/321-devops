@@ -5,7 +5,7 @@
 Start minikube
 ```sh
 minikube start \
- --kubernetes-version 1.25.10 \
+ --kubernetes-version 1.26.5 \
  --container-runtime=containerd \
  --nodes 3 \
  --cni calico
