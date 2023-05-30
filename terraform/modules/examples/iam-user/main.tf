@@ -11,5 +11,8 @@ module "iam_user" {
 
   name = "dev.user_1"
 
+  create_iam_access_key = true
+  iam_access_key_status = "Active"
+
   force_destroy = true
 }

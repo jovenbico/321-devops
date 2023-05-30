@@ -5,7 +5,7 @@ resource "aws_iam_user" "this" {
 }
 
 resource "aws_iam_user_login_profile" "this" {
-  user    = aws_iam_user.this.name
+  user = aws_iam_user.this.name
 
   password_length         = var.password_length
   password_reset_required = var.password_reset_required
@@ -17,4 +17,11 @@ resource "aws_iam_user_login_profile" "this" {
       pgp_key,
     ]
   }
+}
+
+resource "aws_iam_access_key" "this" {
+  count = var.create_iam_access_key ? 1 : 0
+
+  user   = aws_iam_user.this.name
+  status = var.iam_access_key_status
 }

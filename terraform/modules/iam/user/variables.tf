@@ -26,3 +26,15 @@ variable "password_reset_required" {
   type        = bool
   default     = false
 }
+
+variable "create_iam_access_key" {
+  description = "Create access key"
+  type        = bool
+  default     = false
+}
+
+variable "iam_access_key_status" {
+  description = "Status of access key"
+  type = string
+  default = "Inactive"
+}
