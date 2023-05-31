@@ -25,3 +25,4 @@ jobs:
     with:
       java-version: "17"
       app-name: "hello-rest-service"
+    secrets: inherit
