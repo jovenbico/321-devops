@@ -6,6 +6,7 @@ on:
     paths:
       - "applications/hello-rest-service/**"
       - ".github/workflows/hello-rest-service-ci.yaml"
+      - ".github/workflows/_app*.yaml"
     branches:
       - "main"
   pull_request:
