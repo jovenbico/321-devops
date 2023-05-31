@@ -24,4 +24,4 @@ jobs:
           distribution: "temurin"
       - name: Build with Maven
         run: ./mvnw -B package -DskipTests
-        working-directory: applications/${{ inputs.app-name }}
+        working-directory: applications/${{ env.APP_NAME }}
