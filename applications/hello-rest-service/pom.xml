@@ -13,7 +13,7 @@
 	<artifactId>hello-rest-service</artifactId>
 	<version>${build.version}</version>
 	<name>hello-rest-service</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Hello project for Spring Boot</description>
 	<properties>
 		<build.version>1.0.0-SNAPSHOT</build.version>
 		<java.version>17</java.version>
@@ -65,5 +65,13 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub Packages</name>
+			<url>https://maven.pkg.github.com/jovenbico/321-devops</url>
+		</repository>
+	</distributionManagement>
 
 </project>

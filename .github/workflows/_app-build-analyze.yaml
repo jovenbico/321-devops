@@ -21,7 +21,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: ${{ inputs.java-version }}
-          distribution: "microsoft"
+          distribution: "temurin"
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
         with:

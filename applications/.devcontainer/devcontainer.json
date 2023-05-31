@@ -9,7 +9,7 @@
 		},
 		"ghcr.io/devcontainers/features/java:1": {
 			"version": "17",
-			"jdkDistro": "ms"
+			"jdkDistro": "tem"
 		},
 		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
 			"version": "1.25",
