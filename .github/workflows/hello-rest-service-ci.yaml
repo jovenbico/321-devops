@@ -1,7 +1,7 @@
 name: hello-rest-service-ci
 
-env:
-  APP_NAME: "hello-rest-service"
+# env:
+#   APP_NAME: "hello-rest-service"
 
 on:
   workflow_dispatch:
