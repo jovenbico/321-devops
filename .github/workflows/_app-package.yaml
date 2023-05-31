@@ -11,7 +11,7 @@ on:
         type: string
 
 jobs:
-  publish:
+  maven:
     runs-on: ubuntu-latest
     # permissions:
     #   contents: read
@@ -26,3 +26,5 @@ jobs:
         run: ./mvnw -B deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        working-directory: applications/${{ inputs.app-name }}
+  
