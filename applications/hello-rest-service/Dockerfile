@@ -12,15 +12,17 @@ RUN ./mvnw install -DskipTests
 RUN mkdir target/extracted && \
   java -Djarmode=layertools -jar target/*.jar extract --destination target/extracted
 
+##### Spring boot layer index #####
 FROM eclipse-temurin:17-jdk-alpine
+WORKDIR /workspace/app
 
 VOLUME /tmp
 
-ARG EXTRACTED=target/extracted
+ARG EXTRACTED=/workspace/app/target/extracted
 
-COPY ${EXTRACTED}/dependencies/ ./
-COPY ${EXTRACTED}/spring-boot-loader/ ./
-COPY ${EXTRACTED}/snapshot-dependencies/ ./
-COPY ${EXTRACTED}/application/ ./
+COPY --from=build ${EXTRACTED}/dependencies/ ./
+COPY --from=build ${EXTRACTED}/spring-boot-loader/ ./
+COPY --from=build ${EXTRACTED}/snapshot-dependencies/ ./
+COPY --from=build ${EXTRACTED}/application/ ./
 
 ENTRYPOINT ["java","org.springframework.boot.loader.JarLauncher"]
