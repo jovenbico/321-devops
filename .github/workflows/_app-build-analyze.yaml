@@ -51,7 +51,7 @@ jobs:
         with:
           dockerfile: applications/${{ inputs.app-name }}/Dockerfile
           failure-threshold: warning
-      - name: Print out the results
+      - name: Print out the results - hadolint
         env:
           results: ${{ steps.hadolint.outputs.results }}
         run: echo "$results"
