@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: ./.github/worksflows/_app-maven-build.yaml@main
+      - uses: ./.github/workflows/_app-maven-build.yaml@main
         with:
           java-version: ${{ env.JAVA_VERSION }}
           app-name: ${{ env.APP_NAME }}
