@@ -1,8 +1,8 @@
 name: hello-rest-service-ci
 
-env:
-  JAVA_VERSION: "17"
-  APP_NAME: "hello-rest-service"
+# env:
+#   JAVA_VERSION: "17"
+#   APP_NAME: "hello-rest-service"
 
 on:
   workflow_dispatch:
@@ -20,8 +20,8 @@ jobs:
   build:
     uses: ./.github/workflows/_app-maven-build.yaml
     with:
-      java-version: ${{ env.JAVA_VERSION }}
-      app-name: ${{ env.APP_NAME }}
+      java-version: "17"
+      app-name: "hello-rest-service"
     # runs-on: ubuntu-latest
 
     # steps:
