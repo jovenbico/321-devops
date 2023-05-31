@@ -1,4 +1,4 @@
-name: Publish workflow
+name: x-Publish workflow-x
 
 on:
   workflow_call:
@@ -48,7 +48,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ${{ env.REGISTRY }}/${{ inputs.app-name }}
+          images: ${{ env.REGISTRY }}/${{ github.repository }}/${{ inputs.app-name }}
 
       - name: Build and push
         uses: docker/build-push-action@v4

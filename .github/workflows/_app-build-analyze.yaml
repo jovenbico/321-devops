@@ -1,4 +1,4 @@
-name: Build and analyze workflow
+name: x-Build and analyze workflow-x
 on:
   workflow_call:
     inputs:
@@ -40,3 +40,12 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: ./mvnw -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
         working-directory: applications/${{ inputs.app-name }}
+  
+  hadolint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: applications/${{ inputs.app-name }}/Dockerfile

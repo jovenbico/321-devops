@@ -1,4 +1,4 @@
-name: Maven build workflow
+name: x-Maven build workflow-x
 on:
   workflow_call:
     inputs:
