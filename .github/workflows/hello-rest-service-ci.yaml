@@ -26,3 +26,11 @@ jobs:
       java-version: "17"
       app-name: "hello-rest-service"
     secrets: inherit
+  
+  package:
+    needs: ["test"]
+    uses: ./.github/workflows/_app-package.yaml
+    with:
+      java-version: "17"
+      app-name: "hello-rest-service"
+    secrets: inherit
