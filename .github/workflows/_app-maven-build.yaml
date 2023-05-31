@@ -1,0 +1,27 @@
+name: Maven build workflow
+on:
+  workflow_call:
+    inputs:
+      java-version:
+        required: true
+        type: string
+      app-name:
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Shallow clones
+      - name: Set up JDK ${{ inputs.java-version }}
+        uses: actions/setup-java@v3
+        with:
+          java-version: ${{ inputs.java-version }}
+          distribution: "microsoft"
+      - name: Build with Maven
+        run: ./mvnw -B package -DskipTests
+        working-directory: applications/${{ inputs.app-name }}
