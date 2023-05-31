@@ -10,7 +10,7 @@ on:
         type: string
 
 jobs:
-  analyze:
+  sonarcloud:
     runs-on: ubuntu-latest
 
     steps:

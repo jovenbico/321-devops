@@ -13,14 +13,14 @@ on:
       - "main"
 
 jobs:
-  maven:
+  build:
     uses: ./.github/workflows/_app-maven-build.yaml
     with:
       java-version: "17"
       app-name: "hello-rest-service"
 
-  sonarcloud:
-    needs: ["maven"]
+  test:
+    needs: ["build"]
     uses: ./.github/workflows/_app-build-analyze.yaml
     with:
       java-version: "17"

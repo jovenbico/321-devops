@@ -10,7 +10,7 @@ on:
         type: string
 
 jobs:
-  build:
+  maven:
     runs-on: ubuntu-latest
 
     steps:
