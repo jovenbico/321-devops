@@ -1,0 +1,42 @@
+name: Build and analyze workflow
+on:
+  workflow_call:
+    inputs:
+      java-version:
+        required: true
+        type: string
+      app-name:
+        required: true
+        type: string
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Shallow clones
+      - name: Set up JDK ${{ inputs.java-version }}
+        uses: actions/setup-java@v3
+        with:
+          java-version: ${{ inputs.java-version }}
+          distribution: "microsoft"
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ inputs.app-name }}
+          restore-keys: ${{ runner.os }}-m2
+      - name: Build and analyze
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: ./mvnw -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+        working-directory: applications/${{ inputs.app-name }}
