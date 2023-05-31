@@ -11,10 +11,11 @@
 	</parent>
 	<groupId>com.hello</groupId>
 	<artifactId>hello-rest-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>${build.version}</version>
 	<name>hello-rest-service</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
+		<build.version>1.0.0-SNAPSHOT</build.version>
 		<java.version>17</java.version>
 		<sonar.organization>jovenbico</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
