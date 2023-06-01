@@ -36,7 +36,8 @@
 				"outline.collapseItems": "alwaysCollapse",
 				"gitlens.codeLens.enabled": false,
 				"aws.telemetry": false,
-				"terminal.integrated.scrollback": 10000
+				"terminal.integrated.scrollback": 10000,
+				"java.compile.nullAnalysis.mode": "automatic"
 			}
 		}
 	}
