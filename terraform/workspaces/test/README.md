@@ -16,7 +16,7 @@ Ensure that you have the following tools installed locally:
 
 ## Deploy
 
-Using input variable values`testing.tfvars`
+Using input variable values `testing.tfvars`
 ```
 AWS_ACCESS_KEY_ID = ""
 AWS_SECRET_ACCESS_KEY = ""
