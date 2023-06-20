@@ -10,6 +10,11 @@ module "storage_bucket" {
   source = "../../storage"
 
   name = local.name
+
+  # iam_members = [{
+  #   role   = "roles/storage.objectViewer"
+  #   member = "group:test-gcp-ops@example.com"
+  # }]
 }
 
 output "storage_bucket_url" {
