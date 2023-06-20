@@ -9,7 +9,9 @@ locals {
 module "storage_bucket" {
   source = "../../storage"
 
-  name = local.name
+  name          = local.name
+  location      = "US-EAST1"
+  storage_class = "COLDLINE"
 
   # iam_members = [{
   #   role   = "roles/storage.objectViewer"

@@ -5,6 +5,8 @@ resource "random_id" "name_prefix" {
 resource "google_storage_bucket" "this" {
   name     = format("%s-%s", random_id.name_prefix.hex, var.name)
   location = var.location
+
+  storage_class = var.storage_class
 }
 
 resource "google_storage_bucket_iam_member" "members" {
