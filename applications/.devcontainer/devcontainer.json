@@ -12,12 +12,15 @@
 			"jdkDistro": "tem"
 		},
 		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
-			"version": "1.25",
+			"version": "1.26",
 			"helm": "latest",
 			"minikube": "latest"
 		},
 		"ghcr.io/devcontainers/features/docker-in-docker:2": {
-			"version": "lts"
+			"version": "24.0",
+			"moby": false,
+			"dockerDashComposeVersion": "v2",
+			"azureDnsAutoDetection": false
 		},
 		"ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
 			"packages": "iputils-ping,figlet,apache2-utils"
@@ -30,7 +33,8 @@
 				"github.vscode-github-actions",
 				"eamodio.gitlens",
 				"vscjava.vscode-spring-initializr",
-				"vscjava.vscode-spring-boot-dashboard"
+				"vscjava.vscode-spring-boot-dashboard",
+				"ms-kubernetes-tools.vscode-kubernetes-tools"
 			],
 			"settings": {
 				"outline.collapseItems": "alwaysCollapse",
