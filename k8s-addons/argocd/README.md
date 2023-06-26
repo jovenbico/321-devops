@@ -22,7 +22,10 @@ kubectl --namespace argocd get secret argocd-initial-admin-secret \
 ### [Ingress and port forwarding] see `MINIKUBE.md`
 ### Add to `/etc/hosts`
 ```
-127.0.0.1 argocd.minikube.work
+127.0.0.1 argocd.devcon
+```
+```
+http://argocd.devcon:8000/
 ```
 
 ## Uninstall the chart
