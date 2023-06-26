@@ -1,0 +1,37 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
+{
+	"name": "321 DevOps K8s-addons",
+	"image": "mcr.microsoft.com/devcontainers/base:jammy",
+	"features": {
+		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
+			"version": "1.26",
+			"helm": "latest",
+			"minikube": "latest"
+		},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {
+			"version": "24.0",
+			"moby": false,
+			"dockerDashComposeVersion": "v2",
+			"azureDnsAutoDetection": false
+		},
+		"ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+			"packages": "iputils-ping,figlet,apache2-utils"
+		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"GitHub.vscode-pull-request-github",
+				"github.vscode-github-actions",
+				"eamodio.gitlens",
+				"ms-kubernetes-tools.vscode-kubernetes-tools"
+			],
+			"settings": {
+				"outline.collapseItems": "alwaysCollapse",
+				"gitlens.codeLens.enabled": false,
+				"terminal.integrated.scrollback": 10000
+			}
+		}
+	}
+}

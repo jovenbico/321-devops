@@ -1,0 +1,79 @@
+#    #   ##         #    #  ####  #####  ###### 
+#    #  #  #        ##  ## #    # #    # #      
+###### #    # ##### # ## # #    # #    # #####  
+#    # ######       #    # #    # #    # #      
+#    # #    #       #    # #    # #    # #      
+#    # #    #       #    #  ####  #####  ######
+
+#    # # ##### #    #  ####  #    # #####         ##   #    # #####  ####   ####   ####    ##   #      # #    #  ####  
+#    # #   #   #    # #    # #    #   #          #  #  #    #   #   #    # #      #    #  #  #  #      # ##   # #    # 
+#    # #   #   ###### #    # #    #   #   ##### #    # #    #   #   #    #  ####  #      #    # #      # # #  # #      
+# ## # #   #   #    # #    # #    #   #         ###### #    #   #   #    #      # #      ###### #      # #  # # #  ### 
+##  ## #   #   #    # #    # #    #   #         #    # #    #   #   #    # #    # #    # #    # #      # #   ## #    # 
+#    # #   #   #    #  ####   ####    #         #    #  ####    #    ####   ####   ####  #    # ###### # #    #  ####
+
+# # This key configures Redis-HA subchart and when enabled (redis-ha.enabled=true)
+# # the custom redis deployment is omitted
+# # Check the redis-ha chart for more properties
+redis-ha:
+  # -- Enables the Redis HA subchart and disables the custom Redis single node deployment
+  enabled: false
+
+## Application controller
+controller:
+  # -- Application controller name string
+  name: application-controller
+  replicas: 1
+
+# server:
+#   replicas: 2
+
+## Repo Server
+repoServer:
+  # -- Repo server name
+  name: repo-server
+  replicas: 2
+
+## ApplicationSet controller
+applicationSet:
+  # -- Enable ApplicationSet controller
+  enabled: true
+  replicaCount: 2
+
+## Server
+server:
+
+  # -- Argo CD server name
+  name: server
+
+  # -- The number of server pods to run
+  replicas: 1
+
+  ingress:
+    # -- Enable an ingress resource for the Argo CD server
+    enabled: true
+    # -- Defines which ingress controller will implement the resource
+    ingressClassName: "nginx"
+
+    # -- List of ingress hosts
+    hosts: 
+      - argocd.minikube.local
+    # -- List of ingress paths
+    paths:
+      - /
+    # -- Ingress path type. One of `Exact`, `Prefix` or `ImplementationSpecific`
+    pathType: Prefix
+
+## Argo Configs
+configs:
+  params:
+    ## Server properties
+    # -- Run server without TLS
+    server.insecure: true
+
+## Custom resource configuration
+crds:
+  # -- Install and upgrade CRDs
+  install: true
+  # -- Keep CRDs on chart uninstall
+  keep: false
