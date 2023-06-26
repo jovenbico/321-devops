@@ -57,7 +57,7 @@ server:
 
     # -- List of ingress hosts
     hosts: 
-      - argocd.minikube.local
+      - argocd.minikube.work
     # -- List of ingress paths
     paths:
       - /
