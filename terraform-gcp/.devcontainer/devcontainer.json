@@ -5,10 +5,11 @@
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "mcr.microsoft.com/devcontainers/base:jammy",
 	"features": {
-		"ghcr.io/devcontainers/features/docker-in-docker:2": {
-			"version": "latest",
+		"ghcr.io/devcontainers/features/docker-in-docker:2.1": {
+			"version": "23.0",
 			"moby": false,
-			"dockerDashComposeVersion": "v2"
+			"dockerDashComposeVersion": "v2",
+			"azureDnsAutoDetection": false
 		},
 		"ghcr.io/devcontainers/features/terraform:1": {
 			"version": "1.4",

@@ -16,8 +16,8 @@
 			"helm": "latest",
 			"minikube": "latest"
 		},
-		"ghcr.io/devcontainers/features/docker-in-docker:2": {
-			"version": "24.0",
+		"ghcr.io/devcontainers/features/docker-in-docker:2.1": {
+			"version": "23.0",
 			"moby": false,
 			"dockerDashComposeVersion": "v2",
 			"azureDnsAutoDetection": false
